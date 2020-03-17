@@ -20,7 +20,7 @@ client.on("ready", () => {
 const naver = got.extend({
     prefixUrl: 'https://naveropenapi.apigw.ntruss.com/',
     responseType: 'json',
-    headers: options_mask.header
+    headers: options_map.header
 });
 client.on("message", (msg) => {
     const embed = new Discord.MessageEmbed();
