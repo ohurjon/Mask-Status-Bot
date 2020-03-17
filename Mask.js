@@ -89,13 +89,9 @@ client.on("message", (msg) => {
             }
             if (arg[0] == "주소") {
                 if (arg.length == 1) {
-                    embed
-                        .setTitle("사용법")
-                    embed
-                        .setDescription("!마스크 주소 [주소] : 주소를 이용한 위치 3km 주변에 있는 약국을 찾습니다.")
-                    msg
-                        .channel
-                        .send(embed);
+                    embed.setTitle("사용법")
+                    embed.setDescription("!마스크 주소 [주소] : 주소를 이용한 위치 3km 주변에 있는 약국을 찾습니다.")
+                    msg.channel.send(embed);
                 } else {
                     json_map = options_map;
                     json_map.qs.query = msg.content.replace("!마스크 주소 ", "");
@@ -173,13 +169,9 @@ client.on("message", (msg) => {
                                 }, 30000);
                             });
                         } else {
-                            embed
-                                .setTitle("오류")
-                            embed
-                                .setDescription("해당 하는 값의 위치를 찾지 못했습니다.")
-                            msg
-                                .channel
-                                .send(embed)
+                            embed.setTitle("오류")
+                            embed.setDescription("해당 하는 값의 위치를 찾지 못했습니다.")
+                            msg.channel.send(embed)
                         }
                     })
                 }
@@ -231,22 +223,11 @@ client.on("messageReactionAdd", (mr, user) => {
                                         element.type = "농협"
                                         break;
                                 }
-                                embed.addField(element.name, `주소 : ${
-                            element.addr
-                        }\n이름 : ${
-                            element.name
-                        }\n판매처 : ${
-                            element.type
-                        }\n재고 상태: ${
-                            element.remain_stat
-                        }`);
+                                embed.addField(element.name, `주소 : ${element.addr}\n이름 : ${element.name}\n판매처 : ${element.type}\n재고 상태: ${element.remain_stat}`);
                             };
                         }
-                        msg
-                            .edit(embed)
-                        msg
-                            .reactions
-                            .removeAll();
+                        msg.edit(embed)
+                        msg.reactions.removeAll();
                         msg
                             .react("◀️")
                         msg
