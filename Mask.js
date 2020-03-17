@@ -38,6 +38,7 @@ client.on("message", (msg) => {
                     .setDescription("!마스크 [경도(x)] [위도(y)] [페이지] : 위도,경도 정보를 이용해 위치 3km 주변에 있는 약국을 찾습니다.");
                     msg.channel.send(embed);
                 } else {
+                    async()=>{
                     const json_mapr = options_mapr;
                     json_mapr.qs.coords = `${arg[1]},${arg[2]}`
                     try{
@@ -96,7 +97,7 @@ client.on("message", (msg) => {
                         console.log(error);
                     }
                 }
-            }else if (arg[0] == "주소") {
+            }}else if (arg[0] == "주소") {
                 if (arg.length == 1) {
                     embed.setTitle("사용법")
                     embed.setDescription("!마스크 주소 [주소] : 주소를 이용한 위치 3km 주변에 있는 약국을 찾습니다.");
@@ -106,6 +107,7 @@ client.on("message", (msg) => {
                     json_map.qs.query = msg.content.replace("!마스크 주소 ", "");
                     let params = queryString.stringify(json_map.qs);
                     try{
+                        async()=>{
                     const json = await naver('map-geocode/v2/geocode',{params});
                         if (json.status == "OK" && json.meta.count >= 1) {
                             area = json.addresses[0];
@@ -152,7 +154,7 @@ client.on("message", (msg) => {
                             embed.setDescription("해당 하는 값의 위치를 찾지 못했습니다.")
                             msg.channel.send(embed)
                         }
-                    }catch (error){
+                    }}catch (error){
                         embed.setTitle("오류");
                         embed.setDescription("서버와 정상적으로 통신이 불가능합니다.");
                         console.log(error);
