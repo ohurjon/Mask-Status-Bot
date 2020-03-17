@@ -101,11 +101,8 @@ client.on("message", async (msg) => {
                         console.log(error);
                     }
                 }
-<<<<<<< HEAD
+            }
         }else if (arg[0] == "주소") {
-=======
-            }}else if (arg[0] == "주소") {
->>>>>>> 47ebf39feaad2ec891e7b3d760942ed6cffa10f8
                 if (arg.length == 1) {
                     embed.setTitle("사용법")
                     embed.setDescription("!마스크 주소 [주소] : 주소를 이용한 위치 3km 주변에 있는 약국을 찾습니다.");
@@ -114,14 +111,8 @@ client.on("message", async (msg) => {
                     let json_map = options_map;
                     json_map.qs.query = msg.content.replace("!마스크 주소 ", "");
                     let params = queryString.stringify(json_map.qs);
-<<<<<<< HEAD
-                            try{
-                    const json = await naver('map-geocode/v2/geocode?'+params).json();
-=======
                     try{
-                        async()=>{
-                    const json = await naver('map-geocode/v2/geocode',{params});
->>>>>>> 47ebf39feaad2ec891e7b3d760942ed6cffa10f8
+                    const json = await naver('map-geocode/v2/geocode?'+params).json();
                         if (json.status == "OK" && json.meta.count >= 1) {
                             area = json.addresses[0];
                             var addr = area.roadAddress;
@@ -170,16 +161,10 @@ client.on("message", async (msg) => {
                             msg.channel.send(embed);
                             console.log(json);
                         }
-<<<<<<< HEAD
                     }catch (error){
                         embed.setTitle("오류 [ERROR]");
                         embed.setDescription("서버로부터 정보를 얻지 못했습니다.");
                         msg.channel.send(embed);
-=======
-                    }}catch (error){
-                        embed.setTitle("오류");
-                        embed.setDescription("서버와 정상적으로 통신이 불가능합니다.");
->>>>>>> 47ebf39feaad2ec891e7b3d760942ed6cffa10f8
                         console.log(error);
                     }
                 }
